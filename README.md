@@ -40,6 +40,7 @@ apt install --fix-broken google-chrome-stable
 ```txt
 sudo apt-get install xvfb
 ```
+以下命令每次重启服务器都需要运行一次
 ```txt
 Xvfb -ac :7 -screen 0 1280x1024x8 -extension RANDR -nolisten inet6 &
 export DISPLAY=:7
