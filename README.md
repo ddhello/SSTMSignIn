@@ -1,5 +1,6 @@
 # SSTMSignIn
-SS同盟论坛自动签到，使用selenium库进行自动操作  
+SS同盟论坛自动签到，使用selenium库进行自动操作 
+SSTM自动签到 SSTM论坛自动签到
 python3.10.4
 
 # 使用前配置
