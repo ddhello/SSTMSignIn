@@ -1,7 +1,7 @@
 # SSTMSignIn
 SS同盟论坛自动签到，使用selenium库进行自动操作 
 SSTM自动签到 SSTM论坛自动签到
-python3.10.4
+python3.7+
 
 # 使用前配置
 1.修改main.py中的“在这里输入邮箱”"在这里输入密码"两处分别为自己的SS同盟论坛邮箱和密码
