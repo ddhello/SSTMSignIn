@@ -9,7 +9,7 @@ def reply():
     print("开始执行任务...")
     option = webdriver.ChromeOptions()
     option.add_experimental_option("detach",True)
-    driver = webdriver.Chrome(executable_path= "chromedriver.exe",options= option)
+    driver = webdriver.Chrome()
     wait = WebDriverWait(driver,2000)
     driver.get("https://sstm.moe/forum/72-同盟签到区")
     Xpath_temp = '//*[@id="elUserSignIn"]'
@@ -17,10 +17,10 @@ def reply():
     menu.click()
     Xpath_temp = '//*[@id="elUserSignIn_menu"]/form/div/div/ul/li[1]/input'
     username = driver.find_element(by=By.XPATH,value=Xpath_temp)
-    username.send_keys("在这里输入邮箱")
+    username.send_keys("在这里输入邮箱")      #输入SS同盟论坛邮箱
     Xpath_temp = '//*[@id="elUserSignIn_menu"]/form/div/div/ul/li[2]/input'
     password = driver.find_element(by=By.XPATH,value=Xpath_temp)
-    password.send_keys("在这里输入密码")
+    password.send_keys("在这里输入密码")      #输入SS同盟论坛密码
     Xpath_temp = '//*[@id="elSignIn_submit"]'
     sumbit = driver.find_element(by=By.XPATH,value=Xpath_temp)
     sumbit.click()
@@ -30,7 +30,7 @@ def reply():
     Xpath_temp = '//*[@id="ipsLayout_mainArea"]/div[3]/ul/li/span/a'
     reply = driver.find_element(by= By.XPATH,value = Xpath_temp)
     reply.click()
-    time.sleep(0.5)
+    driver.implicitly_wait(3)
     reply_content = driver.find_element(by=By.CLASS_NAME,value = 'cke_wysiwyg_div')
     times = time.time()
     local_time = time.localtime(times)
@@ -40,7 +40,7 @@ def reply():
     print("任务执行完成")
     driver.close()
 
-schedule.every().day.at("00:30").do(reply)
+schedule.every().day.at("00:30").do(reply)   #设置定时时间，如06：30为早上六点三十
 if firstrun:
     reply()
 while True:
