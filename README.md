@@ -25,7 +25,7 @@ python main.py
 
 # 无界面Linux系统使用指南
 鉴于为了自动签到，一般使用linux无界面系统挂机，因此写了该指南。
-以Debian为例。
+以Debian为例。  
 1.安装Chrome  
 更新apt
 ```txt
