@@ -6,7 +6,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 firstrun = True
 def reply():
-    print("开始执行任务...")
+    times = time.time()
+    local_time = time.localtime(times)
+    time_formated = time.strftime("%Y-%m-%d %H:%M:%S", local_time)
+    print(time_formated+" 开始执行任务...")
     option = webdriver.ChromeOptions()
     option.add_experimental_option("detach",True)
     driver = webdriver.Chrome()
@@ -32,12 +35,12 @@ def reply():
     reply.click()
     driver.implicitly_wait(3)
     reply_content = driver.find_element(by=By.CLASS_NAME,value = 'cke_wysiwyg_div')
+    reply_content.send_keys(time_formated)
+    driver.find_element(by=By.XPATH,value='//*[@id="comments"]/div[5]/form/div/div[3]/ul/li[2]/button').click()
     times = time.time()
     local_time = time.localtime(times)
     time_formated = time.strftime("%Y-%m-%d %H:%M:%S", local_time)
-    reply_content.send_keys(time_formated)
-    driver.find_element(by=By.XPATH,value='//*[@id="comments"]/div[5]/form/div/div[3]/ul/li[2]/button').click()
-    print("任务执行完成")
+    print(time_formated+" 任务执行完成")
     driver.close()
 
 schedule.every().day.at("00:30").do(reply)   #设置定时时间，如06：30为早上六点三十
